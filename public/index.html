@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Docker Node.js Dashboard - Premium UI</title>
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Decorative background elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <div class="app-container">
+    <header class="app-header">
+      <div class="logo-area">
+        <i class="fab fa-docker docker-logo" id="header-logo-icon"></i>
+        <div>
+          <h1 id="app-title">Antigravity Docker App</h1>
+          <p id="app-subtitle">Servidor Node.js Dockerizado</p>
+        </div>
+      </div>
+      <div class="status-badge" id="docker-badge">
+        <span class="pulse-indicator"></span>
+        <span id="docker-status-text">Detectando...</span>
+      </div>
+    </header>
+
+    <main class="dashboard-grid">
+      <!-- System Info Cards -->
+      <section class="card glass-panel" id="system-info-section">
+        <div class="card-header">
+          <i class="fas fa-server header-icon"></i>
+          <h2>Estado del Servidor</h2>
+        </div>
+        <div class="stats-list">
+          <div class="stat-item" id="stat-os">
+            <span class="stat-label">Sistema Operativo</span>
+            <span class="stat-value" id="val-os">Cargando...</span>
+          </div>
+          <div class="stat-item" id="stat-arch">
+            <span class="stat-label">Arquitectura CPU</span>
+            <span class="stat-value" id="val-arch">Cargando...</span>
+          </div>
+          <div class="stat-item" id="stat-uptime">
+            <span class="stat-label">Tiempo Activo (Uptime)</span>
+            <span class="stat-value" id="val-uptime">Cargando...</span>
+          </div>
+          <div class="stat-item" id="stat-node">
+            <span class="stat-label">Versión de Node.js</span>
+            <span class="stat-value" id="val-node">Cargando...</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Memory Usage Card -->
+      <section class="card glass-panel" id="memory-usage-section">
+        <div class="card-header">
+          <i class="fas fa-microchip header-icon"></i>
+          <h2>Uso de Memoria</h2>
+        </div>
+        <div class="memory-progress-container">
+          <div class="memory-radial">
+            <svg class="radial-svg" viewBox="0 0 120 120">
+              <circle class="radial-bg" cx="60" cy="60" r="50"></circle>
+              <circle class="radial-progress" id="memory-radial-bar" cx="60" cy="60" r="50"></circle>
+            </svg>
+            <div class="radial-text">
+              <span class="percentage" id="val-mem-percent">0%</span>
+              <span class="subtext">En Uso</span>
+            </div>
+          </div>
+          <div class="memory-details">
+            <div class="detail-row">
+              <span>Usada:</span>
+              <strong id="val-mem-used">0 GB</strong>
+            </div>
+            <div class="detail-row">
+              <span>Total:</span>
+              <strong id="val-mem-total">0 GB</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tasks Manager Card -->
+      <section class="card glass-panel full-width" id="tasks-section">
+        <div class="card-header">
+          <i class="fas fa-list-check header-icon"></i>
+          <h2>Control de Tareas (Docker API Demo)</h2>
+        </div>
+        
+        <form class="task-form" id="new-task-form">
+          <input type="text" id="task-input" placeholder="Escribe una nueva tarea para guardar..." required autocomplete="off">
+          <button type="submit" id="task-submit-btn">
+            <i class="fas fa-plus"></i> Añadir
+          </button>
+        </form>
+
+        <div class="tasks-container">
+          <ul class="tasks-list" id="tasks-list-element">
+            <!-- Tareas cargadas dinámicamente -->
+            <li class="task-loading">Cargando tareas...</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>&copy; 2026 Antigravity System Dashboard. Corriendo sobre Docker con Node.js.</p>
+    </footer>
+  </div>
+
+  <!-- Custom JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
